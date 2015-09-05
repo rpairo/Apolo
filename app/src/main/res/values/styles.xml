@@ -1,8 +1,18 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Declaración de los colores para el estilo Material Design -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+
+        <item name="android:windowBackground">@color/window_background</item>
+
     </style>
+
+    <style name="Theme.Apolo" parent="Base.AppTheme" />
+
+    <style name="Theme.NavigationDrawer" parent="Base.AppTheme" />
 
 </resources>
