@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Apolo" parent="Base.AppTheme">
+    <style name="Theme.Apolo" parent="Theme.Comun" />
 
+    <style name="Theme.Comun" parent="Base.AppTheme">
         <!-- Declaración del color de la navigationBar con estilo Material Design -->
         <item name="android:navigationBarColor">@color/primaryColor</item>
     </style>
 
-    <style name="Theme.NavigationDrawer" parent="Base.AppTheme">
+    <style name="Theme.NavigationDrawer" parent="Theme.Comun">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
