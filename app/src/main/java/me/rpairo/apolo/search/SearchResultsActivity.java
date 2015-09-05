@@ -13,6 +13,8 @@ import me.rpairo.apolo.MainActivity;
  */
 public class SearchResultsActivity extends Activity{
 
+    //region Funciones
+    //region Funciones de la Activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,9 @@ public class SearchResultsActivity extends Activity{
     protected void onNewIntent(Intent intent) {
         handleIntent(intent);
     }
+    //endregion
 
-
+    //region Funciones de usabilidad
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             //texto obtenido
@@ -32,4 +35,6 @@ public class SearchResultsActivity extends Activity{
             Log.d(MainActivity.LOG, query);
         }
     }
+    //endregion
+    //endregion
 }

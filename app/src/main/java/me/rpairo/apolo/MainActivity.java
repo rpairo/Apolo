@@ -18,9 +18,13 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    //region Variables
     private DrawerLayout drawerLayout;
     public final static String LOG = "apolo";
+    //endregion
 
+    //region Funciones
+    //region Funciones de la Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
+    //endregion
 
+    //region Toolbar
     private void agregarToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
         }
     }
+    //endregion
 
+    //region Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
@@ -74,4 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    //endregion
+    //endregion
 }
