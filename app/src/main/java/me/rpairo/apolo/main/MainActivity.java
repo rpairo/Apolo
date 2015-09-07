@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        if(navigationView != null) {
+        if (navigationView != null) {
             this.prepararDrawer(navigationView);
 
             //establecimiento del layout por defecto como el primero del menu
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 seleccionarItem(menuItem);
                 drawerLayout.closeDrawers();
-                return false;
+                return true;
             }
         });
     }
@@ -89,10 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        if(fragmentoGenerico != null)
-            fragmentManager.beginTransaction()
-            .replace(R.id.contenedor_principal, fragmentoGenerico)
-            .commit();
+        if (fragmentoGenerico != null)
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .commit();
 
         this.setTitle(itemDrawer.getTitle());
     }
@@ -107,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar ab = getSupportActionBar();
 
         if (ab != null) {
-
             ab.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
             ab.setDisplayHomeAsUpEnabled(true);
         }

@@ -1,4 +1,4 @@
-package me.rpairo.apolo.adapters.peliculas;
+package me.rpairo.apolo.adapters.musica;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Raul on 7/9/15.
+ * Created by Raul on 8/9/15.
  */
-public class AdaptadorSeccionesPeliculas extends FragmentStatePagerAdapter {
+public class AdaptadorSeccionesMusica extends FragmentStatePagerAdapter {
 
     //region Variables
     private final List<Fragment> fragmentos = new ArrayList<>();
@@ -19,7 +19,7 @@ public class AdaptadorSeccionesPeliculas extends FragmentStatePagerAdapter {
 
     //region Funciones
     //region Constructores
-    public AdaptadorSeccionesPeliculas(FragmentManager fm) {
+    public AdaptadorSeccionesMusica(FragmentManager fm) {
         super(fm);
     }
     //endregion

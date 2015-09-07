@@ -6,12 +6,17 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.adapters.peliculas.AdaptadorSeccionesPeliculas;
+import me.rpairo.apolo.main.MainActivity;
 
 /**
  * Created by Raul on 7/9/15.
@@ -23,12 +28,12 @@ public class FragmentoPeliculas extends Fragment {
     private AppBarLayout appBarLayout;
     private TabLayout tabs;
     private ViewPager viewPager;
+    private FloatingActionsMenu fam;
     //endregion
 
     //region Funciones
     //region Constructores
     public FragmentoPeliculas() {
-
     }
     //endregion
 
@@ -45,6 +50,26 @@ public class FragmentoPeliculas extends Fragment {
         this.viewPager = (ViewPager) view.findViewById(R.id.pager_peliculas);
         this.poblarViewPager(this.viewPager);
         this.tabs.setupWithViewPager(this.viewPager);
+
+
+        //Floating action menu & buttons
+        this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_peliculas);
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.action_buscar_peliculas);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buscar();
+            }
+        });
+
+        fab = (FloatingActionButton) view.findViewById(R.id.action_asistente_peliculas);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                asistente();
+            }
+        });
 
         return view;
     }
@@ -71,6 +96,22 @@ public class FragmentoPeliculas extends Fragment {
         adapter.addFragment(new FragmentoPeliculasFavoritas(), this.getString(R.string.titulo_tab_favoritas));
         adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
         viewPager.setAdapter(adapter);
+    }
+
+    private void buscar() {
+        this.toogleFAB();
+        Log.d(MainActivity.LOG, "Buscar");
+
+    }
+
+    private void asistente() {
+        this.toogleFAB();
+        Log.d(MainActivity.LOG, "Asistente");
+    }
+
+    private void toogleFAB() {
+        if(this.fam.isExpanded())
+            this.fam.collapse();
     }
     //endregion
     //endregion
