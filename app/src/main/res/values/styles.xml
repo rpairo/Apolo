@@ -15,4 +15,10 @@
 
     <style name="Theme.NavigationDrawer" parent="Base.AppTheme" />
 
+    <style name="Base.NavigationViewTheme" parent="Theme.NavigationDrawer">
+        <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Body2</item>
+    </style>
+
+    <style name="Theme.NavigationViewTheme" parent="Base.NavigationViewTheme" />
+
 </resources>

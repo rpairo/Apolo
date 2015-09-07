@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.fragments.FragmentoPeliculas;
+import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculas;
 
 /**
  * Created by Raul on 5/9/15.

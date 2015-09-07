@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="padding_izquierdo_cabecera">16dp</dimen>
+    <dimen name="navigation_drawer_header_margin">48dp</dimen>
 </resources>
