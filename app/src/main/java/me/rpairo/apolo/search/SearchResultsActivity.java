@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import me.rpairo.apolo.MainActivity;
+import me.rpairo.apolo.main.MainActivity;
 
 /**
  * Created by Raul on 5/9/15.

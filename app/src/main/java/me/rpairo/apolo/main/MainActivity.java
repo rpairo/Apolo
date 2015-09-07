@@ -1,7 +1,10 @@
-package me.rpairo.apolo;
+package me.rpairo.apolo.main;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -11,6 +14,9 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import me.rpairo.apolo.R;
+import me.rpairo.apolo.fragments.FragmentoPeliculas;
 
 /**
  * Created by Raul on 5/9/15.
@@ -33,10 +39,55 @@ public class MainActivity extends AppCompatActivity {
         this.agregarToolbar();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        if(navigationView != null) {
+            this.prepararDrawer(navigationView);
+
+            //establecimiento del layout por defecto como el primero del menu
+            seleccionarItem(navigationView.getMenu().getItem(0));
+        }
+    }
+    //endregion
+
+    //region NavigationView
+    private void prepararDrawer(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                seleccionarItem(menuItem);
+                drawerLayout.closeDrawers();
+                return false;
+            }
+        });
+    }
+
+    private void seleccionarItem(MenuItem itemDrawer) {
+        Fragment fragmentoGenerico = null;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        switch (itemDrawer.getItemId()) {
+            case R.id.item_peliculas:
+                fragmentoGenerico = new FragmentoPeliculas();
+                break;
+            case R.id.item_musica:
+                break;
+        }
+
+        if(fragmentoGenerico != null)
+            fragmentManager.beginTransaction()
+            .replace(R.id.contenedor_principal, fragmentoGenerico)
+            .commit();
+
+        this.setTitle(itemDrawer.getTitle());
     }
     //endregion
 
     //region Toolbar
+    //region Funciones auxiliares
     private void agregarToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    //endregion
     //endregion
     //endregion
 }
