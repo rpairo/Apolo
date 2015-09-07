@@ -14,8 +14,12 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import me.rpairo.apolo.R;
+import me.rpairo.apolo.fragments.musica.FragmentoMusica;
 import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculas;
 
 /**
@@ -53,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
     //region NavigationView
     private void prepararDrawer(NavigationView navigationView) {
+
+        ImageView imageView = (ImageView) findViewById(R.id.logo_navigation);
+
+        Glide.with(this.getApplicationContext())
+                .load(R.drawable.ic_launcher)
+                .into(imageView);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -74,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoPeliculas();
                 break;
             case R.id.item_musica:
+                fragmentoGenerico = new FragmentoMusica();
                 break;
         }
 

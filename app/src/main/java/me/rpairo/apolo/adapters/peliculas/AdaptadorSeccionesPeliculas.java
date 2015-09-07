@@ -1,4 +1,4 @@
-package me.rpairo.apolo.fragments.peliculas;
+package me.rpairo.apolo.adapters.peliculas;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,13 +12,19 @@ import java.util.List;
  */
 public class AdaptadorSeccionesPeliculas extends FragmentStatePagerAdapter {
 
+    //region Variables
     private final List<Fragment> fragmentos = new ArrayList<>();
     private final List<String> titulosFragmentos = new ArrayList<>();
+    //endregion
 
+    //region Funciones
+    //region Constructores
     public AdaptadorSeccionesPeliculas(FragmentManager fm) {
         super(fm);
     }
+    //endregion
 
+    //region Funciones del Adapter
     @Override
     public Fragment getItem(int position) {
         return this.fragmentos.get(position);
@@ -38,4 +44,6 @@ public class AdaptadorSeccionesPeliculas extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return this.titulosFragmentos.get(position);
     }
+    //endregion
+    //endregion
 }

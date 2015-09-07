@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.rpairo.apolo.R;
+import me.rpairo.apolo.adapters.peliculas.AdaptadorSeccionesPeliculas;
 
 /**
  * Created by Raul on 7/9/15.
@@ -41,7 +42,7 @@ public class FragmentoPeliculas extends Fragment {
         if (savedInstanceState == null)
             this.insertarTabs(container);
 
-        this.viewPager = (ViewPager) view.findViewById(R.id.pager);
+        this.viewPager = (ViewPager) view.findViewById(R.id.pager_peliculas);
         this.poblarViewPager(this.viewPager);
         this.tabs.setupWithViewPager(this.viewPager);
 
