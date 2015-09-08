@@ -13,6 +13,7 @@ import java.util.List;
 
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.models.Pelicula;
+import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
 
 /**
  * Created by Raul on 8/9/15.
@@ -46,7 +47,9 @@ public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasView
     public void onBindViewHolder(PeliculasViewHolder peliculasViewHolder, int i) {
 
         Glide.with(this.context)
-                .load(this.items.get(i).getPoster())
+                .load(ApiConstantsPeliculas.PATH_GET_IMAGES +
+                        ApiConstantsPeliculas.PATH_SIZE_POSTER +
+                        this.items.get(i).getPoster())
                 .override(350, 400)
                 .animate(android.R.anim.slide_in_left)
                 .into(peliculasViewHolder.poster);
@@ -62,7 +65,7 @@ public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasView
 
     //region Funciones auxiliares
     public void addAll(ArrayList<Pelicula> peliculas) {
-        if(peliculas != null)
+        if (peliculas == null)
             throw new NullPointerException("No puedes pasar una lista nula");
 
         this.items.addAll(peliculas);

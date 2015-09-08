@@ -1,6 +1,10 @@
 package me.rpairo.apolo.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
+
+import me.rpairo.apolo.gson.JsonKeys;
 
 /**
  * Created by Raul on 8/9/15.
@@ -8,12 +12,18 @@ import java.util.ArrayList;
 public class Pelicula {
 
     //region Variables
+    @SerializedName(JsonKeys.TITULO)
     private String titulo;
+    @SerializedName(JsonKeys.POSTER)
     private String poster;
+    @SerializedName(JsonKeys.BACKDROP)
     private String backdrop;
+    @SerializedName(JsonKeys.DESCRIPCION)
     private String descripcion;
+    @SerializedName(JsonKeys.FECHA)
     private String fecha;
 
+    @SerializedName(JsonKeys.ID)
     private int id;
 
     private boolean favorito;
@@ -23,6 +33,17 @@ public class Pelicula {
 
     //region Funciones
     //region Constructores
+    public Pelicula() {
+        this.titulo = "";
+        this.poster = "";
+        this.backdrop = "";
+        this.descripcion = "";
+        this.fecha = "";
+        this.id = 0;
+        this.favorito = false;
+        this.actores = null;
+    }
+
     public Pelicula(String titulo, String poster, String backdrop, String descripcion, String fecha, int id, boolean favorito, ArrayList<Actor> actores) {
         this.titulo = titulo;
         this.poster = poster;
