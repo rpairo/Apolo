@@ -15,7 +15,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.adapters.peliculas.AdaptadorSeccionesPeliculas;
+import me.rpairo.apolo.adapters.peliculas.AdaptadorFragmentsPeliculas;
 import me.rpairo.apolo.main.MainActivity;
 
 /**
@@ -92,7 +92,7 @@ public class FragmentoPeliculas extends Fragment {
 
     //Se encarga de llenar el ViewPager con los fragments como pestañas
     private void poblarViewPager(ViewPager viewPager) {
-        AdaptadorSeccionesPeliculas adapter = new AdaptadorSeccionesPeliculas(this.getFragmentManager());
+        AdaptadorFragmentsPeliculas adapter = new AdaptadorFragmentsPeliculas(this.getFragmentManager());
         adapter.addFragment(new FragmentoPeliculasFavoritas(), this.getString(R.string.titulo_tab_favoritas));
         adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
         viewPager.setAdapter(adapter);

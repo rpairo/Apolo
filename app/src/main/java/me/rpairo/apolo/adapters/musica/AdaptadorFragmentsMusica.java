@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Raul on 8/9/15.
  */
-public class AdaptadorSeccionesMusica extends FragmentStatePagerAdapter {
+public class AdaptadorFragmentsMusica extends FragmentStatePagerAdapter {
 
     //region Variables
     private final List<Fragment> fragmentos = new ArrayList<>();
@@ -19,7 +19,7 @@ public class AdaptadorSeccionesMusica extends FragmentStatePagerAdapter {
 
     //region Funciones
     //region Constructores
-    public AdaptadorSeccionesMusica(FragmentManager fm) {
+    public AdaptadorFragmentsMusica(FragmentManager fm) {
         super(fm);
     }
     //endregion

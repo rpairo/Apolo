@@ -15,7 +15,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.adapters.musica.AdaptadorSeccionesMusica;
+import me.rpairo.apolo.adapters.musica.AdaptadorFragmentsMusica;
 import me.rpairo.apolo.main.MainActivity;
 
 /**
@@ -92,7 +92,7 @@ public class FragmentoMusica extends Fragment {
 
     //Se encarga de llenar el ViewPager con los fragments como pestañas
     private void poblarViewPager(ViewPager viewPager) {
-        AdaptadorSeccionesMusica adapter = new AdaptadorSeccionesMusica(this.getFragmentManager());
+        AdaptadorFragmentsMusica adapter = new AdaptadorFragmentsMusica(this.getFragmentManager());
         adapter.addFragment(new FragmentoMusicaFavorita(), this.getString(R.string.titulo_tab_favoritas));
         adapter.addFragment(new FragmentoMusicaPopular(), this.getString(R.string.titulo_tab_populares));
         viewPager.setAdapter(adapter);
