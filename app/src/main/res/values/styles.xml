@@ -21,4 +21,24 @@
 
     <style name="Theme.NavigationViewTheme" parent="Base.NavigationViewTheme" />
 
+    <style name="Base.CustomActionBar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="Theme.CustomActionBar" parent="Base.CustomActionBar" />
+
+
+    <style name="Base.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Theme.CardContent" parent="Base.CardContent" />
+
 </resources>

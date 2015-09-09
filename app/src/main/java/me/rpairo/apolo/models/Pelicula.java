@@ -2,14 +2,16 @@ package me.rpairo.apolo.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import me.rpairo.apolo.gson.JsonKeys;
+import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
 
 /**
  * Created by Raul on 8/9/15.
  */
-public class Pelicula {
+public class Pelicula implements Serializable {
 
     //region Variables
     @SerializedName(JsonKeys.TITULO)
@@ -66,7 +68,9 @@ public class Pelicula {
     }
 
     public String getPoster() {
-        return poster;
+        return ApiConstantsPeliculas.PATH_GET_IMAGES +
+                ApiConstantsPeliculas.PATH_SIZE_POSTER +
+                this.poster;
     }
 
     public void setPoster(String poster) {
@@ -74,7 +78,9 @@ public class Pelicula {
     }
 
     public String getBackdrop() {
-        return backdrop;
+        return ApiConstantsPeliculas.PATH_GET_IMAGES +
+                ApiConstantsPeliculas.PATH_SIZE_POSTER +
+                this.backdrop;
     }
 
     public void setBackdrop(String backdrop) {

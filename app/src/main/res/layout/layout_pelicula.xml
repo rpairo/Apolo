@@ -11,6 +11,7 @@
     card_view:cardElevation="5dp"
     card_view:cardUseCompatPadding="true"
     android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="1dp"
 
     android:clickable="true" >
 

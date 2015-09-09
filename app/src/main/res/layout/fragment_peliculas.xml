@@ -17,7 +17,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
 
-        app:elevation="6dp"
+        app:elevation="@dimen/fab_elevation"
         app:fab_addButtonColorNormal="@color/accentColor"
         app:fab_addButtonColorPressed="@color/accentDarkColor"
         app:fab_addButtonPlusIconColor="@color/icons"
@@ -27,7 +27,7 @@
         app:pressedTranslationZ="12dp">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_buscar_peliculas"
+            android:id="@+id/fab_buscar_peliculas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/accentColor"
@@ -36,7 +36,7 @@
             app:fab_title="Buscar" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_asistente_peliculas"
+            android:id="@+id/fab_asistente_peliculas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/accentColor"

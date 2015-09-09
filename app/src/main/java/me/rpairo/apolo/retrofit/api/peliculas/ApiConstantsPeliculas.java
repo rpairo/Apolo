@@ -13,6 +13,7 @@ public class ApiConstantsPeliculas {
     public static final String PATH_LANGUAGE = "es";
 
     public static final String PATH_GET_MOVIES_POPULAR = "/movie/popular";
+    public static final String PATH_GET_MOVIES_UPCOMING = "/movie/upcoming";
     public static final String PATH_GET_IMAGES = "http://image.tmdb.org/t/p";
     public static final String PATH_SIZE_POSTER = "/original";
 

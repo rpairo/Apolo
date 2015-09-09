@@ -15,4 +15,7 @@
 
     <style name="Theme.NavigationViewTheme" parent="Base.NavigationViewTheme" />
 
+    <style name="Theme.CustomActionBar" parent="Base.CustomActionBar" />
+
+    <style name="Theme.CardContent" parent="Base.CardContent" />
 </resources>

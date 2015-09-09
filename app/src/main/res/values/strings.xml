@@ -6,4 +6,5 @@
 
     <string name="titulo_tab_favoritas">Favoritas</string>
     <string name="titulo_tab_populares">Populares</string>
+    <string name="titulo_tab_proximas">Próximas</string>
 </resources>

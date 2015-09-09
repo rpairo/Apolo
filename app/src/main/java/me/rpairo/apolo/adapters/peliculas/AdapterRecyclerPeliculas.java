@@ -1,6 +1,7 @@
 package me.rpairo.apolo.adapters.peliculas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.rpairo.apolo.R;
+import me.rpairo.apolo.activities.peliculas.ActivityDetallePelicula;
 import me.rpairo.apolo.models.Pelicula;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
 
@@ -44,17 +46,30 @@ public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasView
     }
 
     @Override
-    public void onBindViewHolder(PeliculasViewHolder peliculasViewHolder, int i) {
+    public void onBindViewHolder(final PeliculasViewHolder peliculasViewHolder, int i) {
 
         Glide.with(this.context)
-                .load(ApiConstantsPeliculas.PATH_GET_IMAGES +
-                        ApiConstantsPeliculas.PATH_SIZE_POSTER +
-                        this.items.get(i).getPoster())
+                .load(this.items.get(i).getPoster())
                 .override(350, 400)
                 .animate(android.R.anim.slide_in_left)
                 .into(peliculasViewHolder.poster);
 
         peliculasViewHolder.titulo.setText(this.items.get(i).getTitulo());
+
+        peliculasViewHolder.poster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ActivityDetallePelicula.class);
+
+                intent.putExtra("pelicula", items.get(peliculasViewHolder.getAdapterPosition()));
+                /*intent.putExtra("titulo", items.get(peliculasViewHolder.getAdapterPosition()).getTitulo());
+                intent.putExtra("backdrop", items.get(peliculasViewHolder.getAdapterPosition()).getBackdrop());
+                intent.putExtra("descripcion", items.get(peliculasViewHolder.getAdapterPosition()).getDescripcion());
+                intent.putExtra("fecha", items.get(peliculasViewHolder.getAdapterPosition()).getFecha());*/
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

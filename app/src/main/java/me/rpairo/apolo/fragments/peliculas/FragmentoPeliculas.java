@@ -55,7 +55,7 @@ public class FragmentoPeliculas extends Fragment {
         //Floating action menu & buttons
         this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_peliculas);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.action_buscar_peliculas);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_buscar_peliculas);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class FragmentoPeliculas extends Fragment {
             }
         });
 
-        fab = (FloatingActionButton) view.findViewById(R.id.action_asistente_peliculas);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab_asistente_peliculas);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +95,10 @@ public class FragmentoPeliculas extends Fragment {
         AdaptadorFragmentsPeliculas adapter = new AdaptadorFragmentsPeliculas(this.getFragmentManager());
         adapter.addFragment(new FragmentoPeliculasFavoritas(), this.getString(R.string.titulo_tab_favoritas));
         adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
+        adapter.addFragment(new FragmentoPeliculasProximas(), this.getString(R.string.titulo_tab_proximas));
         viewPager.setAdapter(adapter);
+
+        //TODO crear fragment de: mejor valoradas y proximas
     }
 
     private void buscar() {

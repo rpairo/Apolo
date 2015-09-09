@@ -5,4 +5,10 @@
 
     <dimen name="padding_izquierdo_cabecera">16dp</dimen>
     <dimen name="navigation_drawer_header_margin">48dp</dimen>
+
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_elevation">16dp</dimen>
+
+    <dimen name="card_margin">16dp</dimen>
 </resources>
