@@ -16,5 +16,8 @@ public interface ApiServicePeliculas {
 
     @GET(ApiConstantsPeliculas.PATH_VERSION + ApiConstantsPeliculas.PATH_GET_MOVIES_UPCOMING)
     void getPeliculasProximas(@Query(ApiConstantsPeliculas.PARAM_LANGUAGE) String lenguaje, @Query(ApiConstantsPeliculas.PARAM_API_KEY) String apiKey, Callback<ResponsePelicula> serverResponse);
+
+    @GET(ApiConstantsPeliculas.PATH_VERSION + ApiConstantsPeliculas.PATH_GET_MOVIES_NOW_PLAYING)
+    void getPeliculasCartelera(@Query(ApiConstantsPeliculas.PARAM_LANGUAGE) String lenguaje, @Query(ApiConstantsPeliculas.PARAM_API_KEY) String apiKey, Callback<ResponsePelicula> serverResponse);
     //endregion
 }

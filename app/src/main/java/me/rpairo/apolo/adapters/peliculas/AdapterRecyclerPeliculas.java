@@ -63,10 +63,6 @@ public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasView
                 Intent intent = new Intent(context, ActivityDetallePelicula.class);
 
                 intent.putExtra("pelicula", items.get(peliculasViewHolder.getAdapterPosition()));
-                /*intent.putExtra("titulo", items.get(peliculasViewHolder.getAdapterPosition()).getTitulo());
-                intent.putExtra("backdrop", items.get(peliculasViewHolder.getAdapterPosition()).getBackdrop());
-                intent.putExtra("descripcion", items.get(peliculasViewHolder.getAdapterPosition()).getDescripcion());
-                intent.putExtra("fecha", items.get(peliculasViewHolder.getAdapterPosition()).getFecha());*/
                 context.startActivity(intent);
             }
         });

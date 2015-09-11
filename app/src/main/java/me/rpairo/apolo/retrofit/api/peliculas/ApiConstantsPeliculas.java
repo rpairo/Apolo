@@ -14,6 +14,12 @@ public class ApiConstantsPeliculas {
 
     public static final String PATH_GET_MOVIES_POPULAR = "/movie/popular";
     public static final String PATH_GET_MOVIES_UPCOMING = "/movie/upcoming";
+    public static final String PATH_GET_MOVIES_VIDEOS = "/movie/{id}/videos";
+    public static final String PATH_GET_MOVIES_IMAGES = "/movie/{id}/images";
+    public static final String PATH_GET_MOVIES_TOP_RATED = "/movie/top_rated";
+    public static final String PATH_GET_MOVIES_NOW_PLAYING = "/movie/now_playing";
+
+
     public static final String PATH_GET_IMAGES = "http://image.tmdb.org/t/p";
     public static final String PATH_SIZE_POSTER = "/original";
 

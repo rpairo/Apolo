@@ -13,6 +13,13 @@
             android:checked="true"
             android:icon="@drawable/ic_music_note_black_48dp"
             android:title="@string/item_musica" />
+
+        <item
+            android:id="@+id/item_github"
+            android:checked="true"
+            android:icon="@drawable/ic_github_circle_black_48dp"
+            android:title="@string/item_github" />
+
     </group>
 
 </menu>

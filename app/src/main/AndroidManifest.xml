@@ -40,8 +40,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:screenOrientation="portrait"
             android:name=".activities.peliculas.ActivityDetallePelicula"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Apolo"></activity>
     </application>
 

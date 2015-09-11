@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import me.rpairo.apolo.R;
+import me.rpairo.apolo.fragments.github.FragmentoGitHub;
 import me.rpairo.apolo.fragments.musica.FragmentoMusica;
 import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculas;
 
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.item_musica:
                 fragmentoGenerico = new FragmentoMusica();
+                break;
+            case R.id.item_github:
+                fragmentoGenerico = new FragmentoGitHub();
                 break;
         }
 
