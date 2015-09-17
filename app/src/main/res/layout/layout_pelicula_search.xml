@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+
+    android:orientation="horizontal"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardElevation="5dp"
+
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/poster_pelicula"
+            android:layout_width="@dimen/pelicula_search_poster_width"
+            android:layout_height="@dimen/pelicula_search_poster_height"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitXY" />
+
+
+        <TextView
+            android:id="@+id/titulo_pelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/poster_pelicula"
+            android:gravity="center_vertical"
+            android:textColor="@color/primary_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/fecha_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo_pelicula"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/poster_pelicula"
+            android:textSize="10sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/poster_pelicula"
+            android:paddingBottom="@dimen/iconos_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/fav_search"
+                android:layout_width="@dimen/iconos"
+                android:layout_height="@dimen/iconos"
+                android:layout_marginTop="10dp"
+                android:alpha="0.54"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ver_detalles"
+                android:layout_width="@dimen/iconos"
+                android:layout_height="@dimen/iconos"
+                android:layout_marginTop="10dp"
+                android:alpha="0.54"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/eliminar_search"
+                android:layout_width="@dimen/iconos"
+                android:layout_height="@dimen/iconos"
+                android:layout_marginTop="10dp"
+                android:alpha="0.54"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

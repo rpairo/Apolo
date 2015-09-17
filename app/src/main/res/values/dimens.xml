@@ -1,5 +1,8 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- TODO limpiar este xml -->
+
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
@@ -7,8 +10,16 @@
     <dimen name="navigation_drawer_header_margin">48dp</dimen>
 
     <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_size_search">40dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">16dp</dimen>
 
     <dimen name="card_margin">16dp</dimen>
+
+    <dimen name="iconos">40dp</dimen>
+    <dimen name="iconos_padding">12dp</dimen>
+    <dimen name="backdrop_pelicula_detalle_height">227dp</dimen>
+
+    <dimen name="cardview_fragments_pelicula_height">250dp</dimen>
+    <dimen name="cardview_fragments_pelicula_width">172dp</dimen>
 </resources>

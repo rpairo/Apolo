@@ -48,8 +48,8 @@ public class FragmentoPeliculasFavoritas extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if(isVisibleToUser) {
-            if(this.ly != null)
+        if (isVisibleToUser) {
+            if (this.ly != null)
                 this.activarAnimacionListaVacia();
         } else {
             if (this.ly != null)

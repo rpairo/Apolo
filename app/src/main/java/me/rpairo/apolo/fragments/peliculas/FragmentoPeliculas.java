@@ -1,5 +1,7 @@
 package me.rpairo.apolo.fragments.peliculas;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -15,8 +17,8 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.adapters.peliculas.AdaptadorFragmentsPeliculas;
-import me.rpairo.apolo.main.MainActivity;
+import me.rpairo.apolo.adapters.peliculas.fragments.AdaptadorFragmentsPeliculas;
+import me.rpairo.apolo.activities.main.MainActivity;
 
 /**
  * Created by Raul on 7/9/15.
@@ -51,7 +53,6 @@ public class FragmentoPeliculas extends Fragment {
         this.poblarViewPager(this.viewPager);
         this.tabs.setupWithViewPager(this.viewPager);
 
-
         //Floating action menu & buttons
         this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_peliculas);
 
@@ -70,6 +71,8 @@ public class FragmentoPeliculas extends Fragment {
                 asistente();
             }
         });
+
+        this.slideInFromTop(view.findViewById(R.id.fab_expand_menu_button), 1000, 1000);
 
         return view;
     }
@@ -90,6 +93,20 @@ public class FragmentoPeliculas extends Fragment {
         this.appBarLayout.addView(this.tabs);
     }
 
+    //Genera la animación para el fab
+    private ObjectAnimator slideInFromTop(View v, long duration, long delay){
+        v.setTranslationY(-300);
+        v.setAlpha(0f);
+        PropertyValuesHolder propA = PropertyValuesHolder.ofFloat(View.ALPHA, 1);
+        PropertyValuesHolder propY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propA, propY);
+        animator.setStartDelay(delay);
+        animator.setDuration(duration);
+        animator.start();
+        return animator;
+    }
+
     //Se encarga de llenar el ViewPager con los fragments como pestañas
     private void poblarViewPager(ViewPager viewPager) {
         AdaptadorFragmentsPeliculas adapter = new AdaptadorFragmentsPeliculas(this.getFragmentManager());
@@ -103,8 +120,8 @@ public class FragmentoPeliculas extends Fragment {
 
     private void buscar() {
         this.toogleFAB();
-        Log.d(MainActivity.LOG, "Buscar");
 
+        Log.d(MainActivity.LOG, "Buscar");
     }
 
     private void asistente() {

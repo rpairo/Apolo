@@ -5,7 +5,7 @@ package me.rpairo.apolo.gson;
  */
 public class JsonKeys {
 
-    //region Variables
+    //region Constantes
     public static final String RESULTS = "results";
     public static final String TITULO = "title";
     public static final String POSTER = "poster_path";

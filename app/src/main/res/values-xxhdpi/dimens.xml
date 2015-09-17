@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- TODO limpiar este xml -->
+
+    <dimen name="iconos">29dp</dimen>
+    <dimen name="iconos_padding">12dp</dimen>
+
+    <dimen name="backdrop_pelicula_detalle_height">227dp</dimen>
+
+    <dimen name="cardview_fragments_pelicula_height">250dp</dimen>
+    <dimen name="cardview_fragments_pelicula_width">172dp</dimen>
+
+    <dimen name="pelicula_search_poster_height">115dp</dimen>
+    <dimen name="pelicula_search_poster_width">75dp</dimen>
+
+</resources>

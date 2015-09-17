@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.adapters.peliculas.AdapterRecyclerPeliculas;
+import me.rpairo.apolo.adapters.peliculas.fragments.AdapterRecyclerPeliculas;
 import me.rpairo.apolo.models.Pelicula;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiAdapterPeliculas;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;

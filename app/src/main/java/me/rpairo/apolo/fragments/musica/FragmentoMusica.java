@@ -16,7 +16,7 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.adapters.musica.AdaptadorFragmentsMusica;
-import me.rpairo.apolo.main.MainActivity;
+import me.rpairo.apolo.activities.main.MainActivity;
 
 /**
  * Created by Raul on 7/9/15.

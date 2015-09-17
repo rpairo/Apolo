@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Apolo</string>
+    <string name="toolbar_search">Búsqueda</string>
+
     <string name="item_peliculas">Películas</string>
     <string name="item_musica">Música</string>
     <string name="item_buscar">Buscar</string>
@@ -8,4 +10,6 @@
     <string name="titulo_tab_favoritas">Favoritas</string>
     <string name="titulo_tab_populares">Populares</string>
     <string name="titulo_tab_proximas">Próximas</string>
+
+    <string name="sinopsis">Sinopsis</string>
 </resources>

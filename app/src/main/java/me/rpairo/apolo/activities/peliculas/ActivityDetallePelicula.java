@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.glide.Glide;
+import me.rpairo.apolo.glide.GlideWrapper;
 import me.rpairo.apolo.models.Pelicula;
 
 /**
@@ -53,18 +53,18 @@ public class ActivityDetallePelicula extends AppCompatActivity {
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
 
         if (pelicula.isFavorito())
-            fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_24dp));
-        else fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_24dp));
+            fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
+        else fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_48dp));
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (pelicula.isFavorito()) {
                     pelicula.setFavorito(false);
-                    fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_24dp));
+                    fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_48dp));
                 } else {
                     pelicula.setFavorito(true);
-                    fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_24dp));
+                    fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
                 }
             }
         });
@@ -72,18 +72,6 @@ public class ActivityDetallePelicula extends AppCompatActivity {
         //añade descripción
         TextView sinopsiTextView = (TextView) findViewById(R.id.sinopsis_detalle_pelicula);
         sinopsiTextView.setText(this.pelicula.getDescripcion());
-
-
-        //añade los botones para los detalles
-        ImageView ivActores = (ImageView) findViewById(R.id.button_actores_detalle_pelicula);
-        Glide.setImageWithResize(this, R.drawable.ic_face_black_24dp, 70, 70, ivActores);
-
-        ImageView ivImagenes = (ImageView) findViewById(R.id.button_imagenes_detalle_pelicula);
-        Glide.setImageWithResize(this, R.drawable.ic_image_black_24dp, 70, 70, ivImagenes);
-
-        ImageView ivTrailer = (ImageView) findViewById(R.id.button_trailer_detalle_pelicula);
-        Glide.setImageWithResize(this, R.drawable.ic_live_tv_black_24dp, 70, 70, ivTrailer);
-
     }
 
     @Override
@@ -101,7 +89,7 @@ public class ActivityDetallePelicula extends AppCompatActivity {
 
     //region Toolbar
     private void setToolbar() {
-        // Añadir la Toolbar
+        // Añade la Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detalle_pelicula);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -111,9 +99,8 @@ public class ActivityDetallePelicula extends AppCompatActivity {
     //region Parallax
     private void loadImageParallax(String url) {
         ImageView image = (ImageView) findViewById(R.id.image_paralax_detalle_pelicula);
-        Glide.setImage(this, url, image);
+        GlideWrapper.setImage(this, url, image);
     }
     //endregion
-
     //endregion
 }
