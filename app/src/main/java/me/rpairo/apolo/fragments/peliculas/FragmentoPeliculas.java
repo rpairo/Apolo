@@ -72,7 +72,7 @@ public class FragmentoPeliculas extends Fragment {
             }
         });
 
-        this.slideInFromTop(view.findViewById(R.id.fab_expand_menu_button), 1000, 1000);
+        this.zoomIn(view.findViewById(R.id.fab_expand_menu_button), 500, 0);
 
         return view;
     }
@@ -91,20 +91,6 @@ public class FragmentoPeliculas extends Fragment {
         this.tabs = new TabLayout(this.getActivity());
         this.tabs.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
         this.appBarLayout.addView(this.tabs);
-    }
-
-    //Genera la animación para el fab
-    private ObjectAnimator slideInFromTop(View v, long duration, long delay){
-        v.setTranslationY(-300);
-        v.setAlpha(0f);
-        PropertyValuesHolder propA = PropertyValuesHolder.ofFloat(View.ALPHA, 1);
-        PropertyValuesHolder propY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0);
-
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propA, propY);
-        animator.setStartDelay(delay);
-        animator.setDuration(duration);
-        animator.start();
-        return animator;
     }
 
     //Se encarga de llenar el ViewPager con los fragments como pestañas
@@ -132,6 +118,33 @@ public class FragmentoPeliculas extends Fragment {
     private void toogleFAB() {
         if(this.fam.isExpanded())
             this.fam.collapse();
+    }
+    //endregion
+
+    //region Animación FloatActionButton
+    private ObjectAnimator zoomIn(View v, long duration, long delay){
+        v.setScaleX(0);
+        v.setScaleY(0);
+
+        PropertyValuesHolder propx = PropertyValuesHolder.ofFloat("scaleX", 1);
+        PropertyValuesHolder propy = PropertyValuesHolder.ofFloat("scaleY", 1);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propx, propy);
+        animator.setStartDelay(delay);
+        animator.setDuration(duration);
+        animator.start();
+        return animator;
+    }
+
+    private ObjectAnimator zoomOut(View v, long duration, long delay){
+        PropertyValuesHolder propx = PropertyValuesHolder.ofFloat(View.SCALE_X, 0);
+        PropertyValuesHolder propy = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propx, propy);
+        animator.setStartDelay(delay);
+        animator.setDuration(duration);
+        animator.start();
+        return animator;
     }
     //endregion
     //endregion

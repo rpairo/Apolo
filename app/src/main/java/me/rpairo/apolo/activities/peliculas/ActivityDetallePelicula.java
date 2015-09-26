@@ -1,17 +1,26 @@
 package me.rpairo.apolo.activities.peliculas;
 
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.glide.GlideWrapper;
 import me.rpairo.apolo.models.Pelicula;
 
 /**
@@ -22,6 +31,8 @@ public class ActivityDetallePelicula extends AppCompatActivity {
 
     //region Variables
     private Pelicula pelicula;
+    private FloatingActionButton fab;
+    private NestedScrollView nsv;
     //endregion
 
     //region Funciones
@@ -50,7 +61,7 @@ public class ActivityDetallePelicula extends AppCompatActivity {
 
 
         //añadir listener al fab
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
+        this.fab  = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
 
         if (pelicula.isFavorito())
             fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
@@ -98,8 +109,62 @@ public class ActivityDetallePelicula extends AppCompatActivity {
 
     //region Parallax
     private void loadImageParallax(String url) {
-        ImageView image = (ImageView) findViewById(R.id.image_paralax_detalle_pelicula);
-        GlideWrapper.setImage(this, url, image);
+        final ImageView image = (ImageView) findViewById(R.id.image_paralax_detalle_pelicula);
+
+        Glide.with(this).load(url).asBitmap().into(new BitmapImageViewTarget(image) {
+            @Override
+            protected void setResource(Bitmap resource) {
+                image.setImageBitmap(resource);
+                pintarPalette(resource, fab);
+            }
+        });
+    }
+    //endregion
+
+    //region Funciones auxiliares
+    public void pintarPalette(Bitmap bitmap, final FloatingActionButton fab) {
+
+        // extrae los colores de la imagen
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+
+            public void onGenerated(Palette p) {
+                // Use generated instance
+
+                if (p != null) {
+
+                    Palette.Swatch vibrantSwatch = p.getVibrantSwatch();
+                    Palette.Swatch vibrantLightSwatch = p.getLightVibrantSwatch();
+                    Palette.Swatch vibrantDarkSwatch = p.getDarkVibrantSwatch();
+                    Palette.Swatch mutedSwatch = p.getMutedSwatch(); // null
+                    Palette.Swatch mutedLightSwatch = p.getLightMutedSwatch(); //null
+                    Palette.Swatch mutedDarkSwatch = p.getDarkMutedSwatch(); // null
+
+
+                    CardView cv = (CardView) findViewById(R.id.cardViewDetalle);
+                    nsv = (NestedScrollView) findViewById(R.id.scroll_detalle_pelicula);
+                    TextView tv = (TextView) findViewById(R.id.sinopsis_detalle_pelicula);
+                    TextView tvT = (TextView) findViewById(R.id.titulo_sinopsis_detalle_pelicula);
+
+
+                    if(vibrantDarkSwatch != null)
+                        nsv.setBackgroundColor(vibrantDarkSwatch.getRgb());
+
+                    if(mutedLightSwatch != null)
+                        cv.setBackgroundColor(mutedLightSwatch.getRgb());
+
+                    if(mutedLightSwatch != null)
+                        tvT.setTextColor(mutedLightSwatch.getTitleTextColor());
+                    if(mutedLightSwatch != null)
+                        tv.setTextColor(mutedLightSwatch.getBodyTextColor());
+
+                    if(vibrantSwatch != null)
+                        fab.setBackgroundTintList(ColorStateList.valueOf(vibrantSwatch.getRgb()));
+
+                    fab.setVisibility(View.VISIBLE);
+                    nsv.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
     //endregion
     //endregion

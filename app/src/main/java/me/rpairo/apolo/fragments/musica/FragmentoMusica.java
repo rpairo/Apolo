@@ -1,5 +1,7 @@
 package me.rpairo.apolo.fragments.musica;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -71,6 +73,8 @@ public class FragmentoMusica extends Fragment {
             }
         });
 
+        this.zoomIn(view.findViewById(R.id.fab_expand_menu_button), 500, 0);
+
         return view;
     }
 
@@ -112,6 +116,33 @@ public class FragmentoMusica extends Fragment {
     private void toogleFAB() {
         if(this.fam.isExpanded())
             this.fam.collapse();
+    }
+    //endregion
+
+    //region Animación FloatActionButton
+    private ObjectAnimator zoomIn(View v, long duration, long delay){
+        v.setScaleX(0);
+        v.setScaleY(0);
+
+        PropertyValuesHolder propx = PropertyValuesHolder.ofFloat("scaleX", 1);
+        PropertyValuesHolder propy = PropertyValuesHolder.ofFloat("scaleY", 1);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propx, propy);
+        animator.setStartDelay(delay);
+        animator.setDuration(duration);
+        animator.start();
+        return animator;
+    }
+
+    private ObjectAnimator zoomOut(View v, long duration, long delay){
+        PropertyValuesHolder propx = PropertyValuesHolder.ofFloat(View.SCALE_X, 0);
+        PropertyValuesHolder propy = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, propx, propy);
+        animator.setStartDelay(delay);
+        animator.setDuration(duration);
+        animator.start();
+        return animator;
     }
     //endregion
     //endregion
