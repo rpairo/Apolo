@@ -10,6 +10,7 @@
     <string name="titulo_tab_favoritas">Favoritas</string>
     <string name="titulo_tab_populares">Populares</string>
     <string name="titulo_tab_proximas">Próximas</string>
+    <string name="titulo_tab_cartelera">Cartelera</string>
 
     <string name="sinopsis">Sinopsis</string>
 </resources>
