@@ -53,6 +53,9 @@ public class FragmentoPeliculas extends Fragment {
         this.poblarViewPager(this.viewPager);
         this.tabs.setupWithViewPager(this.viewPager);
 
+        // Habilita el modo scrollable para el TabLayout
+        this.tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+
         //Floating action menu & buttons
         this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_peliculas);
 
