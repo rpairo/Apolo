@@ -49,7 +49,7 @@ public class AdapterRecyclerPeliculasSearch extends RecyclerView.Adapter<Pelicul
 
         Glide.with(this.context)
                 .load(this.items.get(i).getPoster())
-                .override(85, 120)
+                .override(110, 150)
                 .animate(android.R.anim.slide_in_left)
                 .into(peliculasViewHolderSearch.poster);
 

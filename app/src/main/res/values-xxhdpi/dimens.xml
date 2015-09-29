@@ -11,6 +11,6 @@
     <dimen name="cardview_fragments_pelicula_width">172dp</dimen>
 
     <dimen name="pelicula_search_poster_height">115dp</dimen>
-    <dimen name="pelicula_search_poster_width">75dp</dimen>
+    <dimen name="pelicula_search_poster_width">85dp</dimen>
 
 </resources>
