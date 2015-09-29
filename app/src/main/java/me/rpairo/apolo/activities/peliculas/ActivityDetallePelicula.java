@@ -110,7 +110,7 @@ public class ActivityDetallePelicula extends AppCompatActivity {
     private void loadImageParallax(String url) {
         final ImageView image = (ImageView) findViewById(R.id.image_paralax_detalle_pelicula);
 
-        Glide.with(this).load(url).asBitmap().into(new BitmapImageViewTarget(image) {
+        Glide.with(this).load(url).asBitmap().animate(R.anim.anim_peliculas_detalle).into(new BitmapImageViewTarget(image) {
             @Override
             protected void setResource(Bitmap resource) {
                 image.setImageBitmap(resource);

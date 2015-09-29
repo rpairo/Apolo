@@ -100,9 +100,10 @@ public class FragmentoPeliculas extends Fragment {
     private void poblarViewPager(ViewPager viewPager) {
         AdaptadorFragmentsPeliculas adapter = new AdaptadorFragmentsPeliculas(this.getFragmentManager());
         adapter.addFragment(new FragmentoPeliculasFavoritas(), this.getString(R.string.titulo_tab_favoritas));
+        adapter.addFragment(new FragmentoPeliculasCartelera(), this.getString(R.string.titulo_tab_cartelera));
         adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
         adapter.addFragment(new FragmentoPeliculasProximas(), this.getString(R.string.titulo_tab_proximas));
-        adapter.addFragment(new FragmentoPeliculasCartelera(), this.getString(R.string.titulo_tab_cartelera));
+
         viewPager.setAdapter(adapter);
 
         //TODO crear fragment de: mejor valoradas y proximas
