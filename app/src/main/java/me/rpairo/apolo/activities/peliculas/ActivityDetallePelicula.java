@@ -110,7 +110,7 @@ public class ActivityDetallePelicula extends AppCompatActivity {
     private void loadImageParallax(String url) {
         final ImageView image = (ImageView) findViewById(R.id.image_paralax_detalle_pelicula);
 
-        Glide.with(this).load(url).asBitmap().animate(R.anim.anim_peliculas_detalle).into(new BitmapImageViewTarget(image) {
+        Glide.with(this).load(url).asBitmap().animate(R.anim.anim_backdrop_peliculas_detalle).into(new BitmapImageViewTarget(image) {
             @Override
             protected void setResource(Bitmap resource) {
                 image.setImageBitmap(resource);
@@ -145,21 +145,31 @@ public class ActivityDetallePelicula extends AppCompatActivity {
                     TextView tvT = (TextView) findViewById(R.id.titulo_sinopsis_detalle_pelicula);
 
 
-                    if(vibrantDarkSwatch != null)
+                    if (vibrantDarkSwatch != null)
                         nsv.setBackgroundColor(vibrantDarkSwatch.getRgb());
+                    else if (mutedDarkSwatch != null)
+                        nsv.setBackgroundColor(mutedDarkSwatch.getRgb());
 
-                    if(mutedLightSwatch != null)
+                    if (mutedLightSwatch != null)
                         cv.setBackgroundColor(mutedLightSwatch.getRgb());
+                    else if (vibrantLightSwatch != null)
+                        cv.setBackgroundColor(vibrantLightSwatch.getRgb());
 
-                    if(mutedLightSwatch != null)
+                    if (mutedLightSwatch != null)
                         tvT.setTextColor(mutedLightSwatch.getTitleTextColor());
-                    if(mutedLightSwatch != null)
+                    else if (vibrantLightSwatch != null)
+                        tvT.setTextColor(vibrantLightSwatch.getTitleTextColor());
+
+                    if (mutedLightSwatch != null)
                         tv.setTextColor(mutedLightSwatch.getBodyTextColor());
+                    else if (vibrantLightSwatch != null)
+                        tv.setTextColor(vibrantLightSwatch.getBodyTextColor());
 
-                    if(vibrantSwatch != null)
+                    if (vibrantSwatch != null)
                         fab.setBackgroundTintList(ColorStateList.valueOf(vibrantSwatch.getRgb()));
+                    else if (mutedSwatch != null)
+                        fab.setBackgroundTintList(ColorStateList.valueOf(mutedSwatch.getRgb()));
 
-                    fab.setVisibility(View.VISIBLE);
                     nsv.setVisibility(View.VISIBLE);
                 }
             }

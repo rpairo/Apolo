@@ -11,6 +11,8 @@
     <string name="titulo_tab_populares">Populares</string>
     <string name="titulo_tab_proximas">Próximas</string>
     <string name="titulo_tab_cartelera">Cartelera</string>
+    <string name="titulo_tab_valoradas">Mejor valoradas</string>
 
     <string name="sinopsis">Sinopsis</string>
+    <string name="progress_dialog_cargando">Cargando...</string>
 </resources>

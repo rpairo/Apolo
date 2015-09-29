@@ -103,6 +103,7 @@ public class FragmentoPeliculas extends Fragment {
         adapter.addFragment(new FragmentoPeliculasCartelera(), this.getString(R.string.titulo_tab_cartelera));
         adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
         adapter.addFragment(new FragmentoPeliculasProximas(), this.getString(R.string.titulo_tab_proximas));
+        adapter.addFragment(new FragmentoPeliculasValoradas(), this.getString(R.string.titulo_tab_valoradas));
 
         viewPager.setAdapter(adapter);
 

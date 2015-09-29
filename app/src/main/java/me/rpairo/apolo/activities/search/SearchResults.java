@@ -115,14 +115,13 @@ public class SearchResults extends AppCompatActivity implements retrofit.Callbac
     protected void startLoading() {
 
         proDialog = new ProgressDialog(this);
-        proDialog.setMessage("Cargando...");
+        proDialog.setMessage(getResources().getString(R.string.progress_dialog_cargando));
         proDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         proDialog.setCancelable(false);
         proDialog.show();
     }
 
     protected void stopLoading() {
-
         proDialog.dismiss();
         proDialog = null;
     }
