@@ -16,7 +16,7 @@ import me.rpairo.apolo.adapters.peliculas.fragments.AdapterRecyclerPeliculas;
 import me.rpairo.apolo.models.Pelicula;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiAdapterPeliculas;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
-import me.rpairo.apolo.retrofit.responses.ResponsePelicula;
+import me.rpairo.apolo.retrofit.responses.ResponsePeliculas;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -24,7 +24,7 @@ import retrofit.client.Response;
  * Created by Raul on 7/9/15.
  */
 
-public class FragmentoPeliculasPopulares extends Fragment implements retrofit.Callback<ResponsePelicula>{
+public class FragmentoPeliculasPopulares extends Fragment implements retrofit.Callback<ResponsePeliculas>{
 
     //region Variables
     private RecyclerView recycler;
@@ -79,8 +79,8 @@ public class FragmentoPeliculasPopulares extends Fragment implements retrofit.Ca
 
     //region Funciones del callback de Retrofit
     @Override
-    public void success(ResponsePelicula responsePelicula, Response response) {
-        this.peliculas = responsePelicula.getPeliculas();
+    public void success(ResponsePeliculas responsePeliculas, Response response) {
+        this.peliculas = responsePeliculas.getPeliculas();
         this.adapterRecyclerPeliculas.addAll(this.peliculas);
     }
 

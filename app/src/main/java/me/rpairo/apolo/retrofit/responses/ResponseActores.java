@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 import me.rpairo.apolo.gson.JsonKeys;
-import me.rpairo.apolo.models.Pelicula;
+import me.rpairo.apolo.models.Actor;
 
 /**
- * Created by Raul on 8/9/15.
+ * Created by Raul on 4/10/15.
  */
-public class ResponsePelicula {
+public class ResponseActores {
 
     //region Variables
-    @SerializedName(JsonKeys.RESULTS)
-    private ArrayList<Pelicula> peliculas;
+    @SerializedName(JsonKeys.CAST)
+    private ArrayList<Actor> actores;
     //endregion
 
     //region Funciones
     //region Funciones auxiliares
-    public ArrayList<Pelicula> getPeliculas() {
-        return this.peliculas;
+    public ArrayList<Actor> getActores() {
+        return this.actores;
     }
     //endregion
     //endregion

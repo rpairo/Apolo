@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.peliculas.ActivityDetallePelicula"
+            android:name=".activities.peliculas.ActivityDetallesPelicula"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Apolo" />
         <activity

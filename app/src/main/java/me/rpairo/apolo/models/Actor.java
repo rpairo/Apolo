@@ -1,15 +1,25 @@
 package me.rpairo.apolo.models;
 
+import com.google.gson.annotations.SerializedName;
+
+import me.rpairo.apolo.gson.JsonKeys;
+
 /**
  * Created by Raul on 8/9/15.
  */
 public class Actor {
 
     //region Variables
+    @SerializedName(JsonKeys.FOTO_ACTOR)
     private String foto;
+
+    @SerializedName(JsonKeys.NOMBRE_ACTOR)
     private String nombre;
+
+    @SerializedName(JsonKeys.PERSONAJE)
     private String personaje;
 
+    @SerializedName(JsonKeys.ID_ACTOR)
     private int id;
     //endregion
 
@@ -25,7 +35,7 @@ public class Actor {
 
     //region Getters & Setters
     public String getFoto() {
-        return foto;
+        return "http://image.tmdb.org/t/p/original/" + this.foto;
     }
 
     public void setFoto(String foto) {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.activities.peliculas.ActivityDetallePelicula;
+import me.rpairo.apolo.activities.peliculas.ActivityDetallesPelicula;
 import me.rpairo.apolo.models.Pelicula;
 
 /**
@@ -123,7 +123,7 @@ public class AdapterRecyclerPeliculasSearch extends RecyclerView.Adapter<Pelicul
     }
 
     private void launchActivityDetalles(int position) {
-        Intent intent = new Intent(context, ActivityDetallePelicula.class);
+        Intent intent = new Intent(context, ActivityDetallesPelicula.class);
 
         intent.putExtra("pelicula", items.get(position));
         context.startActivity(intent);

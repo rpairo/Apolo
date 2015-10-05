@@ -2,36 +2,38 @@ package me.rpairo.apolo.activities.peliculas;
 
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.NestedScrollView;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import me.rpairo.apolo.R;
+import me.rpairo.apolo.adapters.peliculas.fragments.AdapterFragmentsDetalles;
+import me.rpairo.apolo.effects.DepthPageTransformer;
+import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculasActores;
+import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculasImagenes;
+import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculasSinopsis;
 import me.rpairo.apolo.models.Pelicula;
 
 /**
  * Created by Raul on 8/9/15.
  */
 
-public class ActivityDetallePelicula extends AppCompatActivity {
+public class ActivityDetallesPelicula extends AppCompatActivity {
 
     //region Variables
-    private Pelicula pelicula;
+    private static Pelicula pelicula;
+    private static Bitmap backdrop;
     private FloatingActionButton fab;
-    private NestedScrollView nsv;
     //endregion
 
     //region Funciones
@@ -39,7 +41,7 @@ public class ActivityDetallePelicula extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_pelicula);
+        setContentView(R.layout.activity_peliculas_detalles);
 
         this.pelicula = (Pelicula) getIntent().getSerializableExtra("pelicula");
 
@@ -54,13 +56,12 @@ public class ActivityDetallePelicula extends AppCompatActivity {
         collapser.setTitle(this.pelicula.getTitulo());
         collapser.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
 
-
         //añade el backdrop
         this.loadImageParallax(this.pelicula.getBackdrop());
 
 
         //añadir listener al fab
-        this.fab  = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
+        this.fab = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
 
         if (pelicula.isFavorito())
             fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
@@ -78,10 +79,21 @@ public class ActivityDetallePelicula extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        //añade descripción
-        TextView sinopsiTextView = (TextView) findViewById(R.id.sinopsis_detalle_pelicula);
-        sinopsiTextView.setText(this.pelicula.getDescripcion());
+
+    private void detallesViewPager() {
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.htab_viewpager);
+        viewPager.setPageTransformer(true, new DepthPageTransformer());
+        setupViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        AdapterFragmentsDetalles adapter = new AdapterFragmentsDetalles(getSupportFragmentManager());
+        adapter.addFrag(new FragmentoPeliculasSinopsis(), "Sinopsis");
+        adapter.addFrag(new FragmentoPeliculasActores(), "Actores");
+        adapter.addFrag(new FragmentoPeliculasImagenes(), "Imagenes");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
@@ -94,8 +106,6 @@ public class ActivityDetallePelicula extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     //endregion
-
-    //TODO implementar listener en los botones para llamar a las activities detalladas
 
     //region Toolbar
     private void setToolbar() {
@@ -114,6 +124,8 @@ public class ActivityDetallePelicula extends AppCompatActivity {
             @Override
             protected void setResource(Bitmap resource) {
                 image.setImageBitmap(resource);
+                backdrop = resource;
+                detallesViewPager();
                 pintarPalette(resource, fab);
             }
         });
@@ -127,53 +139,40 @@ public class ActivityDetallePelicula extends AppCompatActivity {
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
 
             public void onGenerated(Palette p) {
-                // Use generated instance
 
                 if (p != null) {
 
                     Palette.Swatch vibrantSwatch = p.getVibrantSwatch();
-                    Palette.Swatch vibrantLightSwatch = p.getLightVibrantSwatch();
                     Palette.Swatch vibrantDarkSwatch = p.getDarkVibrantSwatch();
-                    Palette.Swatch mutedSwatch = p.getMutedSwatch(); // null
-                    Palette.Swatch mutedLightSwatch = p.getLightMutedSwatch(); //null
-                    Palette.Swatch mutedDarkSwatch = p.getDarkMutedSwatch(); // null
+                    Palette.Swatch mutedSwatch = p.getMutedSwatch();
+                    Palette.Swatch mutedDarkSwatch = p.getDarkMutedSwatch();
 
-
-                    CardView cv = (CardView) findViewById(R.id.cardViewDetalle);
-                    nsv = (NestedScrollView) findViewById(R.id.scroll_detalle_pelicula);
-                    TextView tv = (TextView) findViewById(R.id.sinopsis_detalle_pelicula);
-                    TextView tvT = (TextView) findViewById(R.id.titulo_sinopsis_detalle_pelicula);
-
+                    ViewPager vp = (ViewPager) findViewById(R.id.htab_viewpager);
 
                     if (vibrantDarkSwatch != null)
-                        nsv.setBackgroundColor(vibrantDarkSwatch.getRgb());
+                        vp.setBackgroundColor(vibrantDarkSwatch.getRgb());
                     else if (mutedDarkSwatch != null)
-                        nsv.setBackgroundColor(mutedDarkSwatch.getRgb());
-
-                    if (mutedLightSwatch != null)
-                        cv.setBackgroundColor(mutedLightSwatch.getRgb());
-                    else if (vibrantLightSwatch != null)
-                        cv.setBackgroundColor(vibrantLightSwatch.getRgb());
-
-                    if (mutedLightSwatch != null)
-                        tvT.setTextColor(mutedLightSwatch.getTitleTextColor());
-                    else if (vibrantLightSwatch != null)
-                        tvT.setTextColor(vibrantLightSwatch.getTitleTextColor());
-
-                    if (mutedLightSwatch != null)
-                        tv.setTextColor(mutedLightSwatch.getBodyTextColor());
-                    else if (vibrantLightSwatch != null)
-                        tv.setTextColor(vibrantLightSwatch.getBodyTextColor());
+                        vp.setBackgroundColor(mutedDarkSwatch.getRgb());
 
                     if (vibrantSwatch != null)
                         fab.setBackgroundTintList(ColorStateList.valueOf(vibrantSwatch.getRgb()));
                     else if (mutedSwatch != null)
                         fab.setBackgroundTintList(ColorStateList.valueOf(mutedSwatch.getRgb()));
-
-                    nsv.setVisibility(View.VISIBLE);
                 }
             }
         });
+    }
+
+    public static Pelicula getPelicula() {
+        if(pelicula != null)
+            return pelicula;
+        else return null;
+    }
+
+    public static Bitmap getBackdrop() {
+        if(backdrop != null)
+            return backdrop;
+        else return null;
     }
     //endregion
     //endregion

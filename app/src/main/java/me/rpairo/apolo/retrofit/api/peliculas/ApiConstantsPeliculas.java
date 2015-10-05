@@ -16,6 +16,8 @@ public class ApiConstantsPeliculas {
     public static final String PATH_GET_MOVIES_UPCOMING = "/movie/upcoming";
     public static final String PATH_GET_MOVIES_VIDEOS = "/movie/{id}/videos";
     public static final String PATH_GET_MOVIES_IMAGES = "/movie/{id}/images";
+    public static final String PATH_GET_MOVIES_CREDITS = "/movie/{id}/credits";
+    public static final String PATH_GET_MOVIES_REVIEWS = "/movie/{id}/reviews";
     public static final String PATH_GET_MOVIES_TOP_RATED = "/movie/top_rated";
     public static final String PATH_SEARCH_MOVIE = "/search/movie";
     public static final String PATH_GET_MOVIES_NOW_PLAYING = "/movie/now_playing";

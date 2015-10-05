@@ -10,7 +10,7 @@ import me.rpairo.apolo.R;
 /**
  * Created by Raul on 8/9/15.
  */
-public class PeliculasViewHolder extends RecyclerView.ViewHolder{
+public class ViewHolderPeliculas extends RecyclerView.ViewHolder{
 
     //region Variables
     public ImageView poster;
@@ -19,7 +19,7 @@ public class PeliculasViewHolder extends RecyclerView.ViewHolder{
 
     //region Funciones
     //region Constructores
-    public PeliculasViewHolder(View view) {
+    public ViewHolderPeliculas(View view) {
         super(view);
 
         this.poster = (ImageView) view.findViewById(R.id.poster_pelicula);

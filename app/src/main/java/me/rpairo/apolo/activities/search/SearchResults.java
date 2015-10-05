@@ -1,9 +1,9 @@
 package me.rpairo.apolo.activities.search;
 
 import android.app.ProgressDialog;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +16,7 @@ import me.rpairo.apolo.adapters.peliculas.search.AdapterRecyclerPeliculasSearch;
 import me.rpairo.apolo.models.Pelicula;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiAdapterPeliculas;
 import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
-import me.rpairo.apolo.retrofit.responses.ResponsePelicula;
+import me.rpairo.apolo.retrofit.responses.ResponsePeliculas;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -24,7 +24,7 @@ import retrofit.client.Response;
  * Created by Raul on 15/9/15.
  */
 
-public class SearchResults extends AppCompatActivity implements retrofit.Callback<ResponsePelicula> {
+public class SearchResults extends AppCompatActivity implements retrofit.Callback<ResponsePeliculas> {
 
     //region Variables
     private RecyclerView recycler;
@@ -97,9 +97,9 @@ public class SearchResults extends AppCompatActivity implements retrofit.Callbac
 
     //region Funciones del callback de Retrofit
     @Override
-    public void success(ResponsePelicula responsePelicula, Response response) {
+    public void success(ResponsePeliculas responsePeliculas, Response response) {
         this.stopLoading();
-        this.peliculas = responsePelicula.getPeliculas();
+        this.peliculas = responsePeliculas.getPeliculas();
         this.adapterRecyclerPeliculasSearch.addAll(this.peliculas);
     }
 

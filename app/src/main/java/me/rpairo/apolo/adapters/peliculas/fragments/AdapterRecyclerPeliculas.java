@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.activities.peliculas.ActivityDetallePelicula;
+import me.rpairo.apolo.activities.peliculas.ActivityDetallesPelicula;
 import me.rpairo.apolo.models.Pelicula;
 
 /**
  * Created by Raul on 8/9/15.
  */
-public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasViewHolder> {
+public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<ViewHolderPeliculas> {
 
     //region Variables
     private List<Pelicula> items;
@@ -36,32 +36,32 @@ public class AdapterRecyclerPeliculas extends RecyclerView.Adapter<PeliculasView
 
     //region Funciones del Recycler
     @Override
-    public PeliculasViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolderPeliculas onCreateViewHolder(ViewGroup viewGroup, int i) {
 
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_pelicula, viewGroup, false);
 
-        return new PeliculasViewHolder(view);
+        return new ViewHolderPeliculas(view);
     }
 
     @Override
-    public void onBindViewHolder(final PeliculasViewHolder peliculasViewHolder, int i) {
+    public void onBindViewHolder(final ViewHolderPeliculas viewHolderPeliculas, int i) {
 
         Glide.with(this.context)
                 .load(this.items.get(i).getPoster())
                 .override(350, 400)
                 .animate(android.R.anim.slide_in_left)
-                .into(peliculasViewHolder.poster);
+                .into(viewHolderPeliculas.poster);
 
-        peliculasViewHolder.titulo.setText(this.items.get(i).getTitulo());
+        viewHolderPeliculas.titulo.setText(this.items.get(i).getTitulo());
 
-        peliculasViewHolder.poster.setOnClickListener(new View.OnClickListener() {
+        viewHolderPeliculas.poster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, ActivityDetallePelicula.class);
+                Intent intent = new Intent(context, ActivityDetallesPelicula.class);
 
-                intent.putExtra("pelicula", items.get(peliculasViewHolder.getAdapterPosition()));
+                intent.putExtra("pelicula", items.get(viewHolderPeliculas.getAdapterPosition()));
                 context.startActivity(intent);
             }
         });
