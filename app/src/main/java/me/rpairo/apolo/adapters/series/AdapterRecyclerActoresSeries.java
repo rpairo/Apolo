@@ -1,4 +1,4 @@
-package me.rpairo.apolo.adapters.peliculas.fragments;
+package me.rpairo.apolo.adapters.series;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.activities.peliculas.ActivityDetallesPelicula;
+import me.rpairo.apolo.activities.series.ActivityDetallesSerie;
+import me.rpairo.apolo.adapters.peliculas.fragments.ViewHolderActores;
 import me.rpairo.apolo.models.Actor;
 
 /**
- * Created by Raul on 4/10/15.
+ * Created by Raul on 10/10/15.
  */
-public class AdapterRecyclerActores extends RecyclerView.Adapter<ViewHolderActores> {
+public class AdapterRecyclerActoresSeries extends RecyclerView.Adapter<ViewHolderActores> {
 
     //region Variables
     private List<Actor> items;
@@ -29,7 +30,7 @@ public class AdapterRecyclerActores extends RecyclerView.Adapter<ViewHolderActor
 
     //region Funciones
     //region Constructores
-    public AdapterRecyclerActores(List<Actor> items, Context context) {
+    public AdapterRecyclerActoresSeries(List<Actor> items, Context context) {
         this.items = items;
         this.context = context;
     }
@@ -57,7 +58,7 @@ public class AdapterRecyclerActores extends RecyclerView.Adapter<ViewHolderActor
         holder.personaje.setText(this.items.get(position).getPersonaje());
         holder.nombre.setText(this.items.get(position).getNombre());
 
-        this.pintarPalette(ActivityDetallesPelicula.getBackdrop(), holder);
+        this.pintarPalette(ActivityDetallesSerie.getBackdrop(), holder);
     }
 
     @Override

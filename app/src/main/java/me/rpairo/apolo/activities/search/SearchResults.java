@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.adapters.peliculas.search.AdapterRecyclerPeliculasSearch;
 import me.rpairo.apolo.models.Pelicula;
-import me.rpairo.apolo.retrofit.api.peliculas.ApiAdapterPeliculas;
-import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
+import me.rpairo.apolo.retrofit.api.tmdb.ApiAdapterTMDB;
+import me.rpairo.apolo.retrofit.api.tmdb.ApiConstantsTMDB;
 import me.rpairo.apolo.retrofit.responses.ResponsePeliculas;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -90,8 +90,8 @@ public class SearchResults extends AppCompatActivity implements retrofit.Callbac
     //region Funciones auxiliares de Retrofit
     private void request(String titulo) {
         this.startLoading();
-        ApiAdapterPeliculas.getApiServicePeliculas()
-                .getPeliculaInfo(titulo, "es", ApiConstantsPeliculas.API_KEY, this);
+        ApiAdapterTMDB.getApiServiceTMDB()
+                .getPeliculaInfo(titulo, "es", ApiConstantsTMDB.API_KEY, this);
     }
     //endregion
 

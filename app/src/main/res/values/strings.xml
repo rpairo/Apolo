@@ -4,6 +4,7 @@
 
     <string name="item_peliculas">Películas</string>
     <string name="item_musica">Música</string>
+    <string name="item_series">Series</string>
     <string name="item_buscar">Buscar</string>
     <string name="item_github">Github</string>
 
@@ -12,6 +13,7 @@
     <string name="titulo_tab_proximas">Próximas</string>
     <string name="titulo_tab_cartelera">Cartelera</string>
     <string name="titulo_tab_valoradas">Mejor valoradas</string>
+    <string name="titulo_tab_emision">En emisión</string>
 
     <string name="sinopsis">Sinopsis</string>
     <string name="progress_dialog_cargando">Cargando...</string>

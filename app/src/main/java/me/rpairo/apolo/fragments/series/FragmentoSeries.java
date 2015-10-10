@@ -1,4 +1,4 @@
-package me.rpairo.apolo.fragments.peliculas;
+package me.rpairo.apolo.fragments.series;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -21,10 +21,9 @@ import me.rpairo.apolo.activities.main.MainActivity;
 import me.rpairo.apolo.adapters.peliculas.fragments.AdapterFragmentsPeliculas;
 
 /**
- * Created by Raul on 7/9/15.
+ * Created by Raul on 10/10/15.
  */
-
-public class FragmentoPeliculas extends Fragment {
+public class FragmentoSeries extends Fragment {
 
     //region Variables
     private AppBarLayout appBarLayout;
@@ -35,7 +34,7 @@ public class FragmentoPeliculas extends Fragment {
 
     //region Funciones
     //region Constructores
-    public FragmentoPeliculas() {
+    public FragmentoSeries() {
     }
     //endregion
 
@@ -44,12 +43,12 @@ public class FragmentoPeliculas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_peliculas, container, false);
+        View view = inflater.inflate(R.layout.fragment_series, container, false);
 
         if (savedInstanceState == null)
             this.insertarTabs(container);
 
-        this.viewPager = (ViewPager) view.findViewById(R.id.pager_peliculas);
+        this.viewPager = (ViewPager) view.findViewById(R.id.pager_series);
         this.poblarViewPager(this.viewPager);
         this.tabs.setupWithViewPager(this.viewPager);
 
@@ -57,9 +56,9 @@ public class FragmentoPeliculas extends Fragment {
         this.tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         //Floating action menu & buttons
-        this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_peliculas);
+        this.fam = (FloatingActionsMenu) view.findViewById(R.id.fam_series);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_buscar_peliculas);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_buscar_series);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +66,7 @@ public class FragmentoPeliculas extends Fragment {
             }
         });
 
-        fab = (FloatingActionButton) view.findViewById(R.id.fab_asistente_peliculas);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab_asistente_series);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,11 +98,10 @@ public class FragmentoPeliculas extends Fragment {
     //Se encarga de llenar el ViewPager con los fragments como pestañas
     private void poblarViewPager(ViewPager viewPager) {
         AdapterFragmentsPeliculas adapter = new AdapterFragmentsPeliculas(this.getFragmentManager());
-        adapter.addFragment(new FragmentoPeliculasFavoritas(), this.getString(R.string.titulo_tab_favoritas));
-        adapter.addFragment(new FragmentoPeliculasCartelera(), this.getString(R.string.titulo_tab_cartelera));
-        adapter.addFragment(new FragmentoPeliculasPopulares(), this.getString(R.string.titulo_tab_populares));
-        adapter.addFragment(new FragmentoPeliculasProximas(), this.getString(R.string.titulo_tab_proximas));
-        adapter.addFragment(new FragmentoPeliculasValoradas(), this.getString(R.string.titulo_tab_valoradas));
+        adapter.addFragment(new FragmentoSeriesFavoritas(), this.getString(R.string.titulo_tab_favoritas));
+        adapter.addFragment(new FragmentoSeriesEmision(), this.getString(R.string.titulo_tab_emision));
+        adapter.addFragment(new FragmentoSeriesPopulares(), this.getString(R.string.titulo_tab_populares));
+        adapter.addFragment(new FragmentoSeriesValoradas(), this.getString(R.string.titulo_tab_valoradas));
 
         viewPager.setAdapter(adapter);
     }
@@ -120,13 +118,13 @@ public class FragmentoPeliculas extends Fragment {
     }
 
     private void toogleFAB() {
-        if(this.fam.isExpanded())
+        if (this.fam.isExpanded())
             this.fam.collapse();
     }
     //endregion
 
     //region Animación FloatActionButton
-    private ObjectAnimator zoomIn(View v, long duration, long delay){
+    private ObjectAnimator zoomIn(View v, long duration, long delay) {
         v.setScaleX(0);
         v.setScaleY(0);
 
@@ -140,7 +138,7 @@ public class FragmentoPeliculas extends Fragment {
         return animator;
     }
 
-    private ObjectAnimator zoomOut(View v, long duration, long delay){
+    private ObjectAnimator zoomOut(View v, long duration, long delay) {
         PropertyValuesHolder propx = PropertyValuesHolder.ofFloat(View.SCALE_X, 0);
         PropertyValuesHolder propy = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0);
 

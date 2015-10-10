@@ -1,4 +1,4 @@
-package me.rpairo.apolo.fragments.peliculas;
+package me.rpairo.apolo.fragments.series;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -12,10 +12,9 @@ import android.widget.LinearLayout;
 import me.rpairo.apolo.R;
 
 /**
- * Created by Raul on 7/9/15.
+ * Created by Raul on 10/10/15.
  */
-
-public class FragmentoPeliculasFavoritas extends Fragment {
+public class FragmentoSeriesFavoritas extends Fragment {
 
     //region Variables
     private LinearLayout ly;
@@ -23,7 +22,7 @@ public class FragmentoPeliculasFavoritas extends Fragment {
 
     //region Funciones
     //region Constructores
-    public FragmentoPeliculasFavoritas() {
+    public FragmentoSeriesFavoritas() {
 
     }
     //endregion
@@ -32,14 +31,14 @@ public class FragmentoPeliculasFavoritas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_peliculas_favoritas, container, false);
+        return inflater.inflate(R.layout.fragment_series_favoritas, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.ly = (LinearLayout) view.findViewById(R.id.peliculas_vacia);
+        this.ly = (LinearLayout) getView().findViewById(R.id.series_vacia);
         this.activarAnimacionListaVacia();
     }
 
@@ -73,5 +72,5 @@ public class FragmentoPeliculasFavoritas extends Fragment {
     }
     //endregion
     //endregion
-    //endregion
+    //endregion {
 }

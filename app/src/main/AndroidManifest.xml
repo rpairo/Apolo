@@ -24,6 +24,12 @@
             android:name=".activities.peliculas.ActivityDetallesPelicula"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Apolo" />
+
+        <activity
+            android:name=".activities.series.ActivityDetallesSerie"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Apolo" />
+
         <activity
             android:name=".activities.search.SearchResults"
             android:label="@string/toolbar_search"

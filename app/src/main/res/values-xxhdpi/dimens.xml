@@ -6,6 +6,7 @@
     <dimen name="iconos_padding">12dp</dimen>
 
     <dimen name="backdrop_pelicula_detalle_height">227dp</dimen>
+    <dimen name="backdrop_serie_detalle_height">227dp</dimen>
 
     <dimen name="cardview_fragments_pelicula_height">250dp</dimen>
     <dimen name="cardview_fragments_pelicula_width">172dp</dimen>

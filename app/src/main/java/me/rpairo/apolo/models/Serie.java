@@ -9,12 +9,11 @@ import me.rpairo.apolo.gson.JsonKeys;
 import me.rpairo.apolo.retrofit.api.tmdb.ApiConstantsTMDB;
 
 /**
- * Created by Raul on 8/9/15.
+ * Created by Raul on 10/10/15.
  */
-public class Pelicula implements Serializable {
-
+public class Serie implements Serializable {
     //region Variables
-    @SerializedName(JsonKeys.TITULO_PELICULAS)
+    @SerializedName(JsonKeys.TITULO_SERIE)
     private String titulo;
     @SerializedName(JsonKeys.POSTER)
     private String poster;
@@ -22,7 +21,7 @@ public class Pelicula implements Serializable {
     private String backdrop;
     @SerializedName(JsonKeys.DESCRIPCION)
     private String descripcion;
-    @SerializedName(JsonKeys.FECHA_PELICULA)
+    @SerializedName(JsonKeys.FECHA_SERIE)
     private String fecha;
 
     @SerializedName(JsonKeys.ID)
@@ -35,7 +34,7 @@ public class Pelicula implements Serializable {
 
     //region Funciones
     //region Constructores
-    public Pelicula() {
+    public Serie() {
         this.titulo = "";
         this.poster = "";
         this.backdrop = "";
@@ -46,7 +45,7 @@ public class Pelicula implements Serializable {
         this.actores = null;
     }
 
-    public Pelicula(String titulo, String poster, String backdrop, String descripcion, String fecha, int id, boolean favorito, ArrayList<Actor> actores) {
+    public Serie(String titulo, String poster, String backdrop, String descripcion, String fecha, int id, boolean favorito, ArrayList<Actor> actores) {
         this.titulo = titulo;
         this.poster = poster;
         this.backdrop = backdrop;

@@ -9,6 +9,12 @@
             android:title="@string/item_peliculas" />
 
         <item
+            android:id="@+id/item_series"
+            android:checked="true"
+            android:icon="@drawable/ic_tv_black_48dp"
+            android:title="@string/item_series" />
+
+        <item
             android:id="@+id/item_musica"
             android:checked="true"
             android:icon="@drawable/ic_music_note_black_48dp"
@@ -21,5 +27,4 @@
             android:title="@string/item_github" />
 
     </group>
-
 </menu>

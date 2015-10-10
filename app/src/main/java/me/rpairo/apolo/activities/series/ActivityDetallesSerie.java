@@ -1,4 +1,4 @@
-package me.rpairo.apolo.activities.peliculas;
+package me.rpairo.apolo.activities.series;
 
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -19,18 +19,17 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.adapters.peliculas.fragments.AdapterFragmentsDetalles;
 import me.rpairo.apolo.effects.DepthPageTransformer;
-import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculasActores;
-import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculasSinopsis;
-import me.rpairo.apolo.models.Pelicula;
+import me.rpairo.apolo.fragments.series.FragmentoSeriesActores;
+import me.rpairo.apolo.fragments.series.FragmentoSeriesSinopsis;
+import me.rpairo.apolo.models.Serie;
 
 /**
- * Created by Raul on 8/9/15.
+ * Created by Raul on 10/10/15.
  */
-
-public class ActivityDetallesPelicula extends AppCompatActivity {
+public class ActivityDetallesSerie extends AppCompatActivity {
 
     //region Variables
-    private static Pelicula pelicula;
+    private static Serie serie;
     private static Bitmap backdrop;
     private FloatingActionButton fab;
     //endregion
@@ -40,9 +39,9 @@ public class ActivityDetallesPelicula extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_peliculas_detalles);
+        setContentView(R.layout.activity_series_detalles);
 
-        this.pelicula = (Pelicula) getIntent().getSerializableExtra("pelicula");
+        this.serie = (Serie) getIntent().getSerializableExtra("serie");
 
         //añade la tollbar
         this.setToolbar();
@@ -52,28 +51,28 @@ public class ActivityDetallesPelicula extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CollapsingToolbarLayout collapser = (CollapsingToolbarLayout) findViewById(R.id.collapser_detalle_pelicula);
-        collapser.setTitle(this.pelicula.getTitulo());
+        collapser.setTitle(this.serie.getTitulo());
         collapser.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
 
         //añade el backdrop
-        this.loadImageParallax(this.pelicula.getBackdrop());
+        this.loadImageParallax(this.serie.getBackdrop());
 
 
         //añadir listener al fab
         this.fab = (FloatingActionButton) findViewById(R.id.fab_marcar_favorito_detalle_pelicula);
 
-        if (pelicula.isFavorito())
+        if (serie.isFavorito())
             fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
         else fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_48dp));
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pelicula.isFavorito()) {
-                    pelicula.setFavorito(false);
+                if (serie.isFavorito()) {
+                    serie.setFavorito(false);
                     fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_48dp));
                 } else {
-                    pelicula.setFavorito(true);
+                    serie.setFavorito(true);
                     fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_48dp));
                 }
             }
@@ -89,8 +88,8 @@ public class ActivityDetallesPelicula extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         AdapterFragmentsDetalles adapter = new AdapterFragmentsDetalles(getSupportFragmentManager());
-        adapter.addFrag(new FragmentoPeliculasSinopsis(), "Sinopsis");
-        adapter.addFrag(new FragmentoPeliculasActores(), "Actores");
+        adapter.addFrag(new FragmentoSeriesSinopsis(), "Sinopsis");
+        adapter.addFrag(new FragmentoSeriesActores(), "Actores");
         //adapter.addFrag(new FragmentoPeliculasImagenes(), "Imagenes");
         viewPager.setAdapter(adapter);
     }
@@ -162,9 +161,9 @@ public class ActivityDetallesPelicula extends AppCompatActivity {
         });
     }
 
-    public static Pelicula getPelicula() {
-        if(pelicula != null)
-            return pelicula;
+    public static Serie getSerie() {
+        if(serie != null)
+            return serie;
         else return null;
     }
 

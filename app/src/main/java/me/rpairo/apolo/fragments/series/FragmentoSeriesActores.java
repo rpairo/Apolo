@@ -1,4 +1,4 @@
-package me.rpairo.apolo.fragments.peliculas;
+package me.rpairo.apolo.fragments.series;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import me.rpairo.apolo.R;
-import me.rpairo.apolo.activities.peliculas.ActivityDetallesPelicula;
-import me.rpairo.apolo.adapters.peliculas.fragments.AdapterRecyclerActoresPeliculas;
+import me.rpairo.apolo.activities.series.ActivityDetallesSerie;
+import me.rpairo.apolo.adapters.series.AdapterRecyclerActoresSeries;
 import me.rpairo.apolo.models.Actor;
 import me.rpairo.apolo.retrofit.api.tmdb.ApiAdapterTMDB;
 import me.rpairo.apolo.retrofit.api.tmdb.ApiConstantsTMDB;
@@ -23,13 +23,13 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
- * Created by Raul on 3/10/15.
+ * Created by Raul on 10/10/15.
  */
-public class FragmentoPeliculasActores extends Fragment implements retrofit.Callback<ResponseActores> {
+public class FragmentoSeriesActores extends Fragment implements retrofit.Callback<ResponseActores> {
 
     //region Variables
     private ArrayList<Actor> actores;
-    private AdapterRecyclerActoresPeliculas adapterRecyclerActoresPeliculas;
+    private AdapterRecyclerActoresSeries adapterRecyclerActoresSeries;
     private RecyclerView recycler;
     private RecyclerView.LayoutManager layoutManager;
     private Bitmap bitmap;
@@ -37,7 +37,7 @@ public class FragmentoPeliculasActores extends Fragment implements retrofit.Call
 
     //region Funciones
     //region Constructores
-    public FragmentoPeliculasActores() {
+    public FragmentoSeriesActores() {
 
     }
     //endregion
@@ -62,11 +62,11 @@ public class FragmentoPeliculasActores extends Fragment implements retrofit.Call
         this.layoutManager = new LinearLayoutManager(view.getContext());
         this.recycler.setLayoutManager(this.layoutManager);
 
-        this.adapterRecyclerActoresPeliculas = new AdapterRecyclerActoresPeliculas(this.actores, view.getContext());
-        this.recycler.setAdapter(this.adapterRecyclerActoresPeliculas);
+        this.adapterRecyclerActoresSeries = new AdapterRecyclerActoresSeries(this.actores, view.getContext());
+        this.recycler.setAdapter(this.adapterRecyclerActoresSeries);
 
         if (this.bitmap == null)
-            this.bitmap = ActivityDetallesPelicula.getBackdrop();
+            this.bitmap = ActivityDetallesSerie.getBackdrop();
 
         this.pintarPalette(view, this.bitmap);
 
@@ -78,7 +78,7 @@ public class FragmentoPeliculasActores extends Fragment implements retrofit.Call
     //region Funciones auxiliares de Retrofit
     private void request() {
         ApiAdapterTMDB.getApiServiceTMDB()
-                .getActoresPelicula(ActivityDetallesPelicula.getPelicula().getId(), ApiConstantsTMDB.API_KEY, this);
+                .getActoresSerie(ActivityDetallesSerie.getSerie().getId(), ApiConstantsTMDB.API_KEY, this);
     }
     //endregion
 
@@ -87,7 +87,7 @@ public class FragmentoPeliculasActores extends Fragment implements retrofit.Call
     public void success(ResponseActores responseActores, Response response) {
         this.actores = responseActores.getActores();
 
-        this.adapterRecyclerActoresPeliculas.addAll(this.actores);
+        this.adapterRecyclerActoresSeries.addAll(this.actores);
     }
 
     @Override

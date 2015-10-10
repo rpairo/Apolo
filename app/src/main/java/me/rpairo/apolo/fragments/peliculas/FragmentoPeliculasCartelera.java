@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import me.rpairo.apolo.R;
 import me.rpairo.apolo.adapters.peliculas.fragments.AdapterRecyclerPeliculas;
 import me.rpairo.apolo.models.Pelicula;
-import me.rpairo.apolo.retrofit.api.peliculas.ApiAdapterPeliculas;
-import me.rpairo.apolo.retrofit.api.peliculas.ApiConstantsPeliculas;
+import me.rpairo.apolo.retrofit.api.tmdb.ApiAdapterTMDB;
+import me.rpairo.apolo.retrofit.api.tmdb.ApiConstantsTMDB;
 import me.rpairo.apolo.retrofit.responses.ResponsePeliculas;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -70,8 +70,8 @@ public class FragmentoPeliculasCartelera extends Fragment implements retrofit.Ca
     //region Funciones de Retrofit
     //region Funciones auxiliares de Retrofit
     private void request() {
-        ApiAdapterPeliculas.getApiServicePeliculas()
-                .getPeliculasCartelera("es", ApiConstantsPeliculas.API_KEY, this);
+        ApiAdapterTMDB.getApiServiceTMDB()
+                .getPeliculasCartelera("es", ApiConstantsTMDB.API_KEY, this);
     }
     //endregion
 

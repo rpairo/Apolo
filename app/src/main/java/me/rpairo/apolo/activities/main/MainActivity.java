@@ -3,6 +3,7 @@ package me.rpairo.apolo.activities.main;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +11,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,6 +24,7 @@ import me.rpairo.apolo.activities.search.SearchResults;
 import me.rpairo.apolo.fragments.github.FragmentoGitHub;
 import me.rpairo.apolo.fragments.musica.FragmentoMusica;
 import me.rpairo.apolo.fragments.peliculas.FragmentoPeliculas;
+import me.rpairo.apolo.fragments.series.FragmentoSeries;
 
 /**
  * Created by Raul on 5/9/15.
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         switch (itemDrawer.getItemId()) {
             case R.id.item_peliculas:
                 fragmentoGenerico = new FragmentoPeliculas();
+                break;
+            case R.id.item_series:
+                fragmentoGenerico = new FragmentoSeries();
                 break;
             case R.id.item_musica:
                 fragmentoGenerico = new FragmentoMusica();
